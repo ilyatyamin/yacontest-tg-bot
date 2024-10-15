@@ -1,0 +1,32 @@
+networks:
+ net:
+  driver: bridge
+
+services:
+ bot:
+  build: tg_bot/
+  container_name: TelegramBot
+  restart: always
+  depends_on:
+   - database
+  links:
+   - database:database
+  ports:
+   - "9020:9020"
+  networks:
+   - net
+  
+ database:
+  hostname: database # Это необязательный параметр
+  container_name: database
+  image: postgres
+  restart: always
+  environment:
+   - POSTGRES_USER=postgres
+   - POSTGRES_PASSWORD=postgres
+   - POSTGRES_DB=postgres
+   - POSTGRES_HOST_AUTH_METHOD=trust
+  ports:
+   - "5432:5432"
+  networks:
+   - net
