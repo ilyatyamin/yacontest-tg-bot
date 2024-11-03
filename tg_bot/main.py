@@ -14,7 +14,7 @@ file_log = logging.FileHandler("bot_yacontest_logs.log")
 console_out = logging.StreamHandler()
 logging.basicConfig(handlers=(file_log, console_out), level=logging.INFO)
 
-##### PARAMS
+##### PARAMS.
 is_firebase_needed = True
 
 logger_service = LoggerService(url_supabase=secret_supabase_url,
