@@ -30,3 +30,19 @@ services:
    - "5432:5432"
   networks:
    - net
+
+ restarter:
+  image: docker:cli
+  restart: unless-stopped
+  volumes: [ "/var/run/docker.sock:/var/run/docker.sock" ]
+  entrypoint: [ "/bin/sh","-c" ]
+  command:
+   - |
+    while true; do
+      if [ "$$(date +'%H:%M')" = '03:00' ]; then
+        docker restart bot
+      fi
+      sleep 20
+    done
+  networks:
+   - net

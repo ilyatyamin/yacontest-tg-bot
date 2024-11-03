@@ -1,3 +1,5 @@
+import json
+
 import requests
 
 
@@ -34,11 +36,10 @@ class YaContestService:
                 is_get_normal_response = True
                 break
         if not is_get_normal_response:
-            raise Exception(response.text + "\nMaybe you input wrong data, please check your response.")
+            raise Exception(
+                json.loads(response.text)['message'] + "\nВозможно Вы указали неверные данные, проверьте Ваш запрос")
         else:
             return response.text
-
-
 
     def __get_input_file_url(self,
                              id_contest: str,

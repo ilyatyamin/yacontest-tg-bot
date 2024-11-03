@@ -1,12 +1,14 @@
 import datetime
 
 import psycopg2
-import logging
 import time
+
+from LoggerService import LoggerService
 
 
 class DataService:
-    def __init__(self, db_name, db_user, db_password, db_host, db_port):
+    def __init__(self, db_name, db_user, db_password, db_host, db_port, logger_service: LoggerService):
+        self.__logger = logger_service
         self.__connection = None
 
         is_connected = False
@@ -20,7 +22,7 @@ class DataService:
                     host=db_host,
                     port=db_port,
                 )
-                logging.info("Connection to PostgreSQL DB successful")
+                self.__logger.log_service("OK", "Connection to PostgreSQL DB successful")
 
                 self.__connection.autocommit = True
                 self.__create_table_if_not_exists()
@@ -29,14 +31,14 @@ class DataService:
                 break
 
             except Exception as e:
-                logging.error("Problem with connection to database. try again...")
+                self.__logger.log_service("ERR", "Problem with connection to database. try again...")
                 time.sleep(3)
         if not is_connected:
             raise Exception("No connection to DB... exit")
 
     def __del__(self):
         self.__connection.close()
-        logging.info("Connection to PostgreSQL DB closed.")
+        self.__logger.log_service("ok", "Connection to PostgreSQL DB closed.")
 
     def insert_new_response(self, tg_id, response_time: datetime.datetime,
                             contest_id: str, attempt_id: str, test_id: str):
@@ -51,7 +53,8 @@ class DataService:
                                str(contest_id), str(attempt_id), str(test_id)))
 
         self.__connection.commit()
-        logging.info(f"Inserted in the table new response, response_time = {response_time}, tg_id = {tg_id}")
+        self.__logger.log_service("OK",
+                                  f"Inserted in the table new response, response_time = {response_time}, tg_id = {tg_id}")
 
     def count_user_responses(self, tg_id: str, time_from: datetime.datetime = None,
                              time_to: datetime.datetime = None):
@@ -82,10 +85,9 @@ class DataService:
         cursor.execute(query, params)
         count = cursor.fetchone()[0]
         self.__connection.commit()
-        logging.info(f"Counted user responses: {count}.")
+        self.__logger.log_service("OK", f"Counted user responses: {count}.")
 
         return count
-
 
     def __create_table_if_not_exists(self):
         cursor = self.__connection.cursor()

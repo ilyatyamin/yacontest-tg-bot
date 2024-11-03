@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "tg-interhouse-bot-proj",
+  "private_key_id": "cb759e87e8bacd4927615a1b4e75477db83192b1",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDTXkoKbgMjcr+/\nH1YlcUIG/hBIFHdREH41dgfF3Rngpah6jup5OnSBkpTkvyURO21+CpFkrKqHu3oe\nfwBdQPV9Cgvtuc5s2cyGGDavH/QhDAaOa74bMLth9fVTzRhjKHL61Y0+HBE7tONX\nwBsIZnyrNi6R8EaPUEvem9X6YkwOmPI+f26sIpkwiTIijlFb493Mvw9kF79hwJAA\nqAAXa0A+UJuarOaNUdAw4hhZd2H7FlBqhIB2SKd01VtqKTaYFWCAKs155CWRZsmr\nh4LJAqzdvl30FTVS9docDYxcd7RQ27HlZ+MqlnGCf6sn6lo7Dxvc/8eTVnIWFCmX\nXEaKLIKzAgMBAAECggEAHKpU8EUrN8uAJbNiQ4GwqrIaEyxzYhMSir2PIE50C/tr\ndfOb6QT8d/YhK0ShCk089DMKtNSV7AKI9UnUCtGceXC7XWotjKWdDzKJeAalXTX8\nTaRfC+D4CLkKpGrUO95oeYwss5eq3qYRjv0GrYT4s1+NwU0MxLLnFzGbO3HJTtE/\n+yc+ul7/SSQauIW4eItSjzpWnobN3j2Hj5dbWrTtv3U2bD+ZiJxmGH+ydHzVHdk8\nkzHsheJU6jkgoDpy4kQwYXakPsUAOsei05XOCbcEw2+Y2ct+RK+xw0GusewJw7UG\nWWFvf7FasXip1Wd/icZ8oFEUBcT5RnmldTk6ZAurQQKBgQD8YMbsMTcGPrqUb5lZ\ns9nUHwpFJr5Ph3eS+6XQFHYTRkC7rjihjhdEY/OaN/556NG6B14LSami9Msrf5yg\nHTo+IqZarRw7XnbKUrFuae2FrUZjJP9Vy225oaEWUFndcSnDPqPVJSKXPQDC9gbM\ni+lQDsF0sJF+Z+NpWcsu7SA4xQKBgQDWZthA/lOtcHEu9nVI0Lb/AXBqltPlOR8d\nXJm4l82HoRt09xxP0iAVrs9M7hvE+EcNY2yDskytCeOf3N2badTWKbNKUe32pewm\nMhtj4ZY721ElKqsveyXH6ShuG+/hBQ72wx00AjO57kyUYGVepCTro3NtL+6vmzYq\n9XtxjpZVFwKBgDXY9Dhq28GiWq7XDNId1Ik0wj004gAX+ERNGvjFlNfR8nfY2U5n\nAcHezZgHAG3EZhMaBU/FPMN/FWZHiQSEl+uv+ux36QEly5Sphh/3y+zspor61tvY\nVqX3vWYEaNgdj/qPf+c3UCUSp/nxAkxcQcCKFW6vSau9wMC2nup5P5m9AoGAdWcl\nvhlGWu/6mnvM542a13LDSyrCZ3/rANoHNySxIDbhYSA7uZ3XgegSjg7I2AgYaEVs\nU4VcJVkH8y8vjn3aVVfKXMUWaHydHqFLjFsoOCi1e4Os77ggjSKox/q2VWK+ufNH\n14XpK0RJXOqYN8XsjbgYac7YhgKZG9cGvL0WpwsCgYEA00Uz9RdjiLLaj1RzLi97\nSOZCNjugR+KqLiZH2naWh9D1YQZVecysRjwJuNnjdlr51G9adQHr2og2TlSDgw77\nQgzKFxc12MswQv/nKwmYKUwrQc4Ynj8WcQPvzsC3ls/uEBHrt4toOrLxo3cKoibg\nPe7uJOcDP9UmlQOOiMq9HcM=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-i8ln9@tg-interhouse-bot-proj.iam.gserviceaccount.com",
+  "client_id": "113486424688580240328",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-i8ln9%40tg-interhouse-bot-proj.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
