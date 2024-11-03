@@ -1,9 +1,9 @@
 import logging
 
-from YaContestService import YaContestService
-from DataService import DataService
-from TelegramService import TelegramService
-from LoggerService import LoggerService
+from tg_bot.services.YaContestService import YaContestService
+from tg_bot.services.DataService import DataService
+from tg_bot.services.TelegramService import TelegramService
+from tg_bot.services.LoggerService import LoggerService
 
 secret_bot_key = '7676288154:AAHzVX0_BQQk_-n4R0hiOOJ1QU1leO23ueQ'
 secret_yandex_key = 'y0_AgAAAAAW3qH0AAyEuAAAAAESenn_AAC9dsJiYphGR6AcWui1Zg4RPZPSNQ'
