@@ -1,0 +1,4 @@
+INFO:root:Service message -> ну . STATUS = OK
+ERROR:root:(!!!) Problem with connection to Supabase
+INFO:root:Service message -> Problem with connection to database. try again.... STATUS = ERR
+ERROR:root:(!!!) Problem with connection to Supabase
