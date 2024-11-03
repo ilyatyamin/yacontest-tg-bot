@@ -1,6 +1,6 @@
 FROM python:3.9
 ADD main.py .
-ADD /services .
+ADD services /services
 
 COPY . .
 
@@ -9,6 +9,6 @@ RUN pip install psycopg2-binary
 RUN pip install pytelegrambotapi
 RUN pip install supabase
 
-ENV PYTHONPATH /
+ENV PYTHONPATH /services
 
 CMD ["python", "./main.py"]
