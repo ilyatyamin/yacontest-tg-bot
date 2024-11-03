@@ -1,5 +1,6 @@
 FROM python:3.9
 
+ADD /services .
 COPY . .
 
 RUN pip install requests
