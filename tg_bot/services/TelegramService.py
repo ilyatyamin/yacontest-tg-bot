@@ -32,7 +32,7 @@ class TelegramService:
         @self.__tg_bot.message_handler(commands=['start'])
         def reply_start_message(message: telebot.types.Message):
             self.__logger.log(str(message.from_user.id),
-                              message.from_user.first_name + " " + message.from_user.last_name,
+                             self.__get_name_message(message),
                               datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S'),
                               "ok",
                               "started dialogue with bot with command / start")
@@ -42,7 +42,7 @@ class TelegramService:
         @self.__tg_bot.message_handler(commands=['help'])
         def reply_help_message(message: telebot.types.Message):
             self.__logger.log(str(message.from_user.id),
-                              message.from_user.first_name + " " + message.from_user.last_name,
+                              self.__get_name_message(message),
                               datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S'),
                               "ok",
                               "sent command /help")
@@ -56,7 +56,7 @@ class TelegramService:
                                                                           datetime.combine(datetime.now(), time.max))
 
             self.__logger.log(str(message.from_user.id),
-                              message.from_user.first_name + " " + message.from_user.last_name,
+                              self.__get_name_message(message),
                               datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S'),
                               "ok",
                               f"sent message /count_free_attempts. Bot answered: {self.__num_of_daily_attempts - total_attempts_today}   (user has now {total_attempts_today} attempts)")
@@ -67,7 +67,7 @@ class TelegramService:
         @self.__tg_bot.message_handler(commands=['get_test'])
         def reply_get_test_message(message: telebot.types.Message):
             self.__logger.log(str(message.from_user.id),
-                              message.from_user.first_name + " " + message.from_user.last_name,
+                              self.__get_name_message(message),
                               datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S'),
                               "ok",
                               f"sent command /get_test")
@@ -79,13 +79,13 @@ class TelegramService:
         def inner_get_test_message(message: telebot.types.Message):
             splitted_message = message.text.split()
             self.__logger.log(str(message.from_user.id),
-                              message.from_user.first_name + " " + message.from_user.last_name,
+                              self.__get_name_message(message),
                               datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S'),
                               "info",
                               f" tried to get input data. user's input: {message.text}")
             if len(splitted_message) != 3:
                 self.__logger.log(str(message.from_user.id),
-                                  message.from_user.first_name + " " + message.from_user.last_name,
+                                  self.__get_name_message(message),
                                   datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S'),
                                   "wrong data",
                                   f"inputted wrong data (got {len(splitted_message)} tags, need = 3)")
@@ -98,7 +98,7 @@ class TelegramService:
                                                                        datetime.combine(datetime.now(), time.max))
                 if count_already >= self.__num_of_daily_attempts:
                     self.__logger.log(str(message.from_user.id),
-                                      message.from_user.first_name + " " + message.from_user.last_name,
+                                      self.__get_name_message(message),
                                       datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S'),
                                       "no attempts",
                                       f"has no attempts to got input data")
@@ -112,7 +112,7 @@ class TelegramService:
                         self.__db_service.insert_new_response(tg_id, datetime.now(), *splitted_message)
 
                         self.__logger.log(str(message.from_user.id),
-                                          message.from_user.first_name + " " + message.from_user.last_name,
+                                          self.__get_name_message(message),
                                           datetime.fromtimestamp(message.date).strftime('%Y-%m-%d %H:%M:%S'),
                                           "ok",
                                           f"got his input data for test {splitted_message[2]} in contest {splitted_message[0]}, attempt = {splitted_message[1]}")
@@ -165,6 +165,18 @@ class TelegramService:
         return f"""
         У Вас осталось {free_attempts} попыток на сегодня. Всего в день доступно {self.__num_of_daily_attempts} попыток.
         """
+
+    @staticmethod
+    def __get_name_message(message):
+        name = ''
+        if message.from_user.first_name is not None:
+            name += str(message.from_user.first_name)
+        if message.from_user.last_name is not None:
+            name += str(message.from_user.last_name)
+        if len(name) > 0:
+            return name
+        return 'Unknown user'
+
 
     @staticmethod
     def __get_log_header(message: telebot.types.Message):
