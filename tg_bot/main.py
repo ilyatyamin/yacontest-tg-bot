@@ -26,7 +26,7 @@ database_service = DataService("postgres", "postgres",
                                logger_service)
 
 
-api_service = YaContestService(secret_yandex_key)
+api_service = YaContestService(secret_yandex_key, logger_service)
 
 telegram_service = TelegramService(secret_bot_key, database_service, api_service, logger_service)
 telegram_service.start()

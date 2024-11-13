@@ -2,10 +2,13 @@ import json
 
 import requests
 
+from LoggerService import LoggerService
+
 
 class YaContestService:
-    def __init__(self, yandex_token: str):
+    def __init__(self, yandex_token: str, logger : LoggerService):
         self.__token = yandex_token
+        self.__logger = logger
         self.__headers = {
             "Authorization": f"OAuth {yandex_token}"
         }
@@ -33,9 +36,11 @@ class YaContestService:
             response = requests.get(url=api_url,
                                     headers=self.__headers)
             if response.status_code == 200:
+                self.__logger.log_service("OK", "got response from YaContest: " + response.text[:100])
                 is_get_normal_response = True
                 break
         if not is_get_normal_response:
+            self.__logger.log_service("ERR", "got ERR response from YaContest: " + response.text)
             raise Exception(
                 json.loads(response.text)['message'] + "\nВозможно Вы указали неверные данные, проверьте Ваш запрос")
         else:
