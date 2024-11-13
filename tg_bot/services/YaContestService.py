@@ -41,8 +41,8 @@ class YaContestService:
         else:
             return response.text
 
-    def __get_input_file_url(self,
-                             id_contest: str,
+    @staticmethod
+    def __get_input_file_url(id_contest: str,
                              id_submission: str,
                              test_id: str):
         return f'https://api.contest.yandex.net/api/public/v2/contests/{id_contest}/submissions/{id_submission}/{test_id}/input'

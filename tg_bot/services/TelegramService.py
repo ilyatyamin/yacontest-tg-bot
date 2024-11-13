@@ -1,3 +1,4 @@
+import os
 from datetime import datetime, time
 
 import telebot
@@ -118,7 +119,15 @@ class TelegramService:
                                           f"got his input data for test {splitted_message[2]} in contest {splitted_message[0]}, attempt = {splitted_message[1]}")
 
                         self.__tg_bot.reply_to(message,
-                                               f"Входные данные к тесту {splitted_message[2]} в контесте № {splitted_message[0]}:\n\n{data}")
+                                               f"Входные данные к тесту {splitted_message[2]} в контесте № {splitted_message[0]}:")
+
+                        path_to_file = f'{splitted_message[2]}_{splitted_message[0]}_in.txt'
+                        with open(path_to_file, 'w+') as file:
+                            file.write(data)
+
+                        self.__tg_bot.send_document(tg_id, open(path_to_file, 'w+'))
+                        os.remove(path_to_file)
+
                     except Exception as e:
                         self.__tg_bot.reply_to(message, f"Произошла ошибка: {e}")
 
