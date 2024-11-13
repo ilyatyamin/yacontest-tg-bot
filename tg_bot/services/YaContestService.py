@@ -42,7 +42,7 @@ class YaContestService:
         if not is_get_normal_response:
             self.__logger.log_service("ERR", "got ERR response from YaContest: " + response.text)
             raise Exception(
-                json.loads(response.text)['message'] + "\nВозможно Вы указали неверные данные, проверьте Ваш запрос")
+                response.text + "\nВозможно Вы указали неверные данные, проверьте Ваш запрос")
         else:
             return response.text
 
