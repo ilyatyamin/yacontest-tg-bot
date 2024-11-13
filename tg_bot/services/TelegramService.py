@@ -124,8 +124,7 @@ class TelegramService:
                         path_to_file = f'{splitted_message[2]}_{splitted_message[0]}_in.txt'
                         with open(path_to_file, 'w+') as file:
                             file.write(data)
-
-                        self.__tg_bot.send_document(tg_id, open(path_to_file, 'w+'))
+                            self.__tg_bot.send_document(tg_id, file)
                         os.remove(path_to_file)
 
                     except Exception as e:
